@@ -127,10 +127,10 @@
     <!-- Contact section with a form for visitors to reach out to you -->
     <section id="contact">
         <h2 style="font-family: 'EB Garamond', serif;">Contact</h2>
-        <form id="contact-form">
-            <input type="text" id="name" name="name" placeholder="Your Name">
-            <input type="email" id="email" name="email" placeholder="Your Email">
-            <textarea id="message" name="message" placeholder="Your Message"></textarea>
+        <form id="contact-form" action="contact.php" method="post">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             <button type="submit">Send</button>
         </form>
     </section>
