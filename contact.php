@@ -1,25 +1,28 @@
 <?php
-// Get data from form  
-$name = $_POST['name'];
-$email= $_POST['email'];
-$message= $_POST['message'];
+// Validate and sanitize inputs
+$name = htmlspecialchars($_POST['name']);
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$message = htmlspecialchars($_POST['message']);
 
-$to = "bastiansoutdoorsolutions@gmail.com";
-$subject = "This is the subject line";
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $to = "bastiansoutdoorsolutions@gmail.com";
+    $subject = "New Message from Website";
 
-// The following text will be sent
-// Name = user entered name
-// Email = user entered email
-// Message = user entered message 
-$txt ="Name = ". $name . "\r\n  Email = " 
-    . $email . "\r\n Message =" . $message;
+    // The following text will be sent
+    $txt = "Name: $name\r\nEmail: $email\r\nMessage:\r\n$message";
 
-$headers = "From: noreply@demosite.com" . "\r\n" .
-            "CC: somebodyelse@example.com";
-if($email != NULL) {
-    mail($to, $subject, $txt, $headers);
+    $headers = "From: noreply@demosite.com\r\n" .
+               "CC: somebodyelse@example.com";
+
+    // Send the email
+    if (mail($to, $subject, $txt, $headers)) {
+        // Redirect on successful email send
+        header("Location: last.html");
+        exit(); // Prevent further script execution
+    } else {
+        echo "Failed to send email.";
+    }
+} else {
+    echo "Invalid email format.";
 }
-
-// Redirect to
-header("Location:last.html");
 ?>
