@@ -88,7 +88,7 @@ nav ul li a {
 
 #about img {
     border-radius: 50%; /* Make the image circular */
-    width: 150px; /* Width of the image */
+    width: 550px; /* Width of the image */
     height: auto; /* Auto height to maintain aspect ratio */
     border: 3px solid #ddd; /* Border around the image */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
